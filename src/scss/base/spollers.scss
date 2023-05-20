@@ -1,0 +1,140 @@
+// Базовые стили спойлеров
+// Сниппет (HTML): spoller
+
+// Блок со спойлерами
+.spollers {
+   padding: rem(15) 0 0 0;
+   position: absolute;
+   display: grid;
+   gap: 15px;
+
+   &__group {
+      display: block;
+
+      &:not(:first-child){
+         padding: rem(15) 0px 0px 0px;
+      }
+
+      &:nth-child(2) {
+         display: flex;
+         padding: rem(15) 0px 0px 0px;
+      }
+
+      &-item {
+         max-width: rem(175);
+         height: 100%;
+
+         ul {
+            li {
+               padding: rem(10) 0 0 0;
+               a {
+                  font-weight: 400;
+                  font-size: 14px;
+                  text-decoration: none;
+   
+                  color: #464646;
+               }
+            }
+         }
+      }
+
+      &-link {
+         font-weight: 600;
+         font-size: 14px;
+         text-transform: uppercase;
+         text-decoration: none;
+
+         color: #151515;
+      }
+
+      h2 {
+         font-weight: 600;
+         font-size: 14px;
+         text-transform: uppercase;
+
+         color: #151515;
+      }
+   }
+}
+
+// Спойлер
+.spollers__item {
+   font-size: rem(20);
+   z-index: 1000;
+}
+
+// Заголовок спойлера
+.spollers__title {
+   width: rem(47);
+   height: rem(30);
+   display: flex;
+   align-items: center;
+   cursor: default;
+   text-align: left;
+   border: 1px solid #eee;
+   padding: rem(10) rem(15);
+   border-radius: rem(5);
+
+   ._spoller-init & {
+      cursor: pointer;
+
+      &::before {
+         transform: translate(-75%, -50%) rotate(40deg);
+      }
+
+      &::after {
+         transform: translate(0, -50%) rotate(-40deg);
+      }
+
+      &._spoller-active {
+         &::before {
+            transform: translateX(-75%) rotate(-40deg);
+         }
+
+         &::after {
+            transform: rotate(40deg);
+         }
+      }
+   }
+}
+
+// Контент спойлера
+.spollers__body {
+   margin: rem(10) 0 0 0;
+   width: rem($containerWidth);
+   background-color: #FFFFFF;
+   padding: rem(50);
+   border: 1px solid #DCDCDC;
+
+   &-content {
+      display: flex;
+   }
+
+   &-left {
+      h2 {
+         font-weight: 600;
+         font-size: 14px;
+         text-transform: uppercase;
+
+         color: #151515;
+      }
+
+      &>.spollers__group>.spollers__group-item:not(:first-child) {
+         padding: 0 0 0 rem(10);
+      }
+   }
+
+   &-center {
+      padding: 0 0 0 rem(25);
+
+      &>.--block {
+         display: block;
+      }
+   }
+
+   &-right {}
+
+   &-links {
+      padding: 0 0 0 rem(25);
+   }
+}
